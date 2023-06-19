@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { AuthProvider } from "./context/AuthContext.jsx"
+import { TaskProvider } from "./context/TasksContext.jsx"
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import TasksPage from './pages/TasksPage.jsx'
@@ -10,6 +11,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx"
 function App() {
   return (
     <AuthProvider>
+      <TaskProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />
@@ -24,6 +26,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      </TaskProvider>
     </AuthProvider>
   )
 }

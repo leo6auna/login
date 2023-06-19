@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { UseTasks } from "../context/TasksContext";
 
 
 function TaskFormPage() {
@@ -7,6 +8,8 @@ function TaskFormPage() {
   const onSubmit = handleSubmit((data)=>{
     console.log(data)
   })
+  const { tasks } = UseTasks();
+  console.log(tasks)
   return (
     <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
       <h1>Agrega una nueva tarea</h1>
