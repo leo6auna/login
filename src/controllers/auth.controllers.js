@@ -39,7 +39,7 @@ export const login = async (req, res)=>{
             if (!isMatch) return res.status(400).json({message: "Wrong password"})
             const token = await createAccessToken({ id: userFound._id });
             res.cookie("token", token,{
-                httpOnly: 'http://127.0.0.1:5173',
+                // httpOnly: 'http://localhost:5173/',
                 secure: true,
                 sameSite:"none",
             });
@@ -63,7 +63,6 @@ export const logout = (req,res) =>{
 };
 
 export const verifyToken = async (req,res)=>{
-    console.log('estamos en el verify token')
     const {token} = req.cookies
     if (!token) return res.status(401).json({message: "No autorizado"})
     jwt.verify(token, TOKEN_SECRET, async (err,user)=>{
