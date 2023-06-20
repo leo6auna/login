@@ -9,7 +9,7 @@ const app = express();
 
 
 app.use((req, res, next)=>{
-	res.header('Access-Control-Allow-Origin', 'https://login-production-cd51.up.railway.app');
+	res.header('Access-Control-Allow-Origin', FRONTEND_URL);
 	res.header('Access-Control-Allow-Credentials', 'true'),
 	res.header(
 		'Access-Control-Allow-Headers',
@@ -23,7 +23,7 @@ app.use((req, res, next)=>{
 });
 
 app.use(cors({
-    origin: 'https://login-production-cd51.up.railway.app',
+    origin: FRONTEND_URL,
     credentials: true,
 }));
 app.use(morgan('dev'))
