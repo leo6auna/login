@@ -8,7 +8,7 @@ import { FRONTEND_URL } from './config.js';
 const app = express();
 
 app.use(cors({
-    origin: 'https://login-smoky-nine.vercel.app',
+    origin: 'https://login-smoky-nine.vercel.app/',
     credentials: true,
 }));
 app.use(morgan('dev'))
