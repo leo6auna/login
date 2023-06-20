@@ -9,7 +9,7 @@ const app = express();
 
 
 app.use((req, res, next)=>{
-	res.header('Access-Control-Allow-Origin', '');
+	res.header('Access-Control-Allow-Origin', FRONTEND_URL);
 	res.header('Access-Control-Allow-Credentials', 'true'),
 	res.header(
 		'Access-Control-Allow-Headers',
