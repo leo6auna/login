@@ -8,7 +8,7 @@ import { FRONTEND_URL } from './config.js';
 const app = express();
 
 app.use(cors({
-    origin: FRONTEND_URL,
+    origin: 'https://login-smoky-nine.vercel.app',
     credentials: true,
 }));
 app.use(morgan('dev'))
@@ -17,11 +17,7 @@ app.use(cookieParser());
 
 app.use('/api', authRoutes)
 app.use('/api', tasksRoutes)
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://login-smoky-nine.vercel.app');
-  res.header('Access-Control-Allow-Credentials', true);
 
-});
 if (process.env.NODE_ENV === "production") {
     const path = await import("path");
     app.use(express.static("client/dist"));
