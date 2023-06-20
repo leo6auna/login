@@ -2,7 +2,7 @@ import User from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
 import { createAccessToken } from '../libs/jwt.js';
 import jwt from 'jsonwebtoken'
-import { TOKEN_SECRET } from '../config.js';
+import { FRONTEND_URL, TOKEN_SECRET } from '../config.js';
 
 export const register = async (req, res)=>{ 
     const {email, name, password} = req.body;
@@ -39,7 +39,7 @@ export const login = async (req, res)=>{
             if (!isMatch) return res.status(400).json({message: "Wrong password"})
             const token = await createAccessToken({ id: userFound._id });
             res.cookie("token", token,{
-                // httpOnly: 'http://localhost:5173/',
+                httpOnly: FRONTEND_URL,
                 secure: true,
                 sameSite:"none",
             });
