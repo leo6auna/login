@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use('/api', authRoutes)
 app.use('/api', tasksRoutes)
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://login-production-cd51.up.railway.app/');
+  res.header('Access-Control-Allow-Origin', 'https://login-smoky-nine.vercel.app');
   res.header('Access-Control-Allow-Credentials', true);
 
 });
