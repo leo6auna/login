@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 function RegisterPage(){
     const {register ,handleSubmit, formState:{errors}} = useForm();
-    const {signup, isAuthenticated, errors: registerErrors} = useAuth();
+    const {signup, isAuthenticated, errors :registerErrors} = useAuth();
     const navigate = useNavigate();
     useEffect(() =>{
         if(isAuthenticated) navigate('/tasks')
