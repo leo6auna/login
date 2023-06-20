@@ -1,13 +1,19 @@
 import Task from '../models/task.model.js'
 
 export const getTasks = async (req,res)=>{
-    const tasks = await Task.find({user: req.user.payload.id}).populate('user')
+    const tasks = await Task.find({user: req.user.id}).populate('user')
     res.json(tasks)
 }
 export const getTask = async (req,res)=>{
-    const task = await Task.findById(req.params.id)
-    if (!task) res.status(402).json({message: "Task not found"})
-    return res.json(task)
+    try {
+        const task = await Task.findById(req.params.id)
+        if (!task) res.status(402).json({message: "Task not found"})
+        return res.json(task)
+    } catch (error) {
+        return res.status(400).json({message: 'Task not found'})
+    }
+
+    
 }
 export const createTask = async (req,res)=>{
     const {title, description, date} = req.body;
@@ -16,7 +22,7 @@ export const createTask = async (req,res)=>{
         title,
         description,
         date,
-        user: req.user.payload.id
+        user: req.user.id
     });
     await newTask.save();
     res.json(newTask); 

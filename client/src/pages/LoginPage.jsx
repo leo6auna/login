@@ -1,14 +1,19 @@
 import { useForm } from "react-hook-form"
 import { useAuth } from "../context/AuthContext"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 function LoginPage(){
     
     const { register, handleSubmit, formState: {errors}} = useForm()
-    const { signin, errors: loginErrors }= useAuth()
+    const { signin, errors: loginErrors , isAuthenticated }= useAuth()
+    const navigate = useNavigate()
     const onSubmit = handleSubmit((data) => {
         signin(data)
     })
+    useEffect(()=>{
+        if(isAuthenticated) navigate('/tasks')
+    }, [isAuthenticated])
 
     return(
         <div className="flex h-[calc(100vh-100px)] items-center justify-center ">
@@ -35,7 +40,7 @@ function LoginPage(){
                 placeholder='Password'/>
                 {errors.password && (<p className='text-red-500'>Password is required</p>)}
 
-                <button type='submit'> Iniciar Sesión</button>
+                <button type='submit' className='bg-cyan-600 rounded-sm px-4 py-2 my-2 '> Iniciar Sesión</button>
             </form>
             <p className='flex gap-x-2 justify-between'>
                 Don't have an account yet? <Link to="/register" className='text-sky-500'>Sign Up</Link>
