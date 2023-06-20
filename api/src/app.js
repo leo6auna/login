@@ -23,7 +23,7 @@ app.use((req, res, next)=>{
 });
 
 app.use(cors({
-    origin: 'https://login-smoky-nine.vercel.app/',
+    origin: 'https://login-smoky-nine.vercel.app/login',
     credentials: true,
 }));
 app.use(morgan('dev'))
