@@ -1,6 +1,8 @@
 import app from './app.js';
 import { connectDb } from './db.js';
+import { PORT } from './config.js';
 
 connectDb();
-app.listen(3000);
-console.log('server on port ',3000)
+app.listen(PORT);
+console.log('server on port ',PORT)
+console.log(`Environment: ${process.env.NODE_ENV}`)
