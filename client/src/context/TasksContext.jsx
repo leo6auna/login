@@ -70,4 +70,3 @@ export function TaskProvider({children}) {
         </TasksContext.Provider>
     )
 }
-
