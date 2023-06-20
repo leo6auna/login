@@ -6,3 +6,4 @@ connectDb();
 app.listen(PORT);
 console.log('server on port ',PORT)
 console.log(`Environment: ${process.env.NODE_ENV}`)
+console.log(process.env)
