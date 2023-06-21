@@ -25,7 +25,7 @@ export function TaskProvider({children}) {
     
     const createTask = async(task) =>{
         const res = await createTaskRequest(task)
-        setTasks(tasks)
+        setTasks(res.data)
         console.log(res)
     }
 
