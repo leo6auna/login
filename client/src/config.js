@@ -1,1 +1,1 @@
-export const API_URL = "https://login-production-cd51.up.railway.app";
+export const API_URL = "https://hilarious-breath-production.up.railway.app/api";
