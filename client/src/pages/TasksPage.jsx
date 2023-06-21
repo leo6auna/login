@@ -7,6 +7,7 @@ function TasksPage() {
   
   useEffect(() => {
     getTasks();
+    console.log('use effect')
   }, []);
 
   return (
