@@ -17,7 +17,6 @@ export function TaskProvider({children}) {
     const getTasks = async() =>{
         try {
         const res = await getTasksRequest();
-        setTasks(res.data)
         } catch (error) {
             console.log(error)
         }
@@ -25,7 +24,6 @@ export function TaskProvider({children}) {
     
     const createTask = async(task) =>{
         const res = await createTaskRequest(task)
-        setTasks(res.data)
         console.log(res)
     }
 
@@ -53,7 +51,6 @@ export function TaskProvider({children}) {
     const updateTask = async(id, task) =>{
         try {
             await updateTaskRequest(id, task)
-            setTasks(tasks)
         } catch (error) {
             console.error(error)
         }
